@@ -136,7 +136,145 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    form
+                    <form action="" method="post" class="row p-0 m-0 g-2 needs-validation" novalidate>
+                        <div class="form-floating mb-2">
+                            <select class="form-select" id="validationCustom01" aria-label="Floating label select example" required>
+                                <option selected disabled value="">Choose...</option>
+                              <option value="1">Bags</option>
+                              <option value="2">Shoe</option>
+                              <option value="3">Utensils</option>
+                              <option value="3">Others</option>
+                            </select>
+                            <label for="validationCustom01" class="ms-2">Select the product type</label>
+                            <div class="invalid-feedback">
+                                Please check your input and input correct details.
+                              </div>
+                              <div class="valid-feedback">
+                                Looks good!
+                              </div>
+                          </div>
+
+                          <div class="row p-0 m-0">
+                              <div class="col-md-6 mb-3 mt-3">
+                                  <label for="validationCustom02">Input the Product Name</label>
+                                <input type="name" class="form-control" id="validationCustom02" required>
+                                <div class="invalid-feedback">
+                                    Please check your input and input correct details.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    Looks good!
+                                  </div>
+                              </div>
+                              
+                              <div class="row p-0 m-0 col-md-6">
+    
+                                <div class="col-md-6 mb-3 mt-3">
+                                    <label for="validationCustom03">Cost</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">N</span>
+                                        <input type="number" class="form-control" id="validationCustom03" aria-label="Amount (to the nearest Nara)" required>
+                                        <span class="input-group-text">.00</span>
+                                      </div>
+                                  <div class="invalid-feedback">
+                                      Please check your input and input correct details.
+                                    </div>
+                                    <div class="valid-feedback">
+                                      Looks good!
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-6 mb-3 mt-3">
+                                    <label for="validationCustom04">Price</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">N</span>
+                                        <input type="number" class="form-control" id="validationCustom04" aria-label="Amount (to the nearest Nara)" required>
+                                        <span class="input-group-text">.00</span>
+                                      </div>
+                                  <div class="invalid-feedback">
+                                      Please check your input and input correct details.
+                                    </div>
+                                    <div class="valid-feedback">
+                                      Looks good!
+                                    </div>
+                                </div>
+                              </div>
+
+                              <div class="row p-0 m-0">
+                                <div class="col-md-6">
+                                    <label for="validationCustom05">Add Color & Quantity </label>
+                                      <div class="card mt-2">
+                                        <div class="card-body">
+                                          
+                                          <div class="row add ">
+                                              <div class="col-1 d-flex align-items-center justify-content-center p-0 ps-1 m-0">
+                                                  <p class="m-0">1.</p>
+                                              </div>
+                                              <div class="col-11 row">
+                                                  <div class="col-sm-6">
+                                                      <label for="validationCustom02">Color</label>
+                                                    <input type="name" class="form-control" id="validationCustom02" required>
+                                                    <div class="invalid-feedback">
+                                                        Please check your input and input correct details.
+                                                      </div>
+                                                      <div class="valid-feedback">
+                                                        Looks good!
+                                                      </div>
+                                                  </div>
+      
+                                                  <div class="col-sm-6">
+                                                      <label for="validationCustom02">Quantity</label>
+                                                    <input type="name" class="form-control" id="validationCustom02" required>
+                                                    <div class="invalid-feedback">
+                                                        Please check your input and input correct details.
+                                                      </div>
+                                                      <div class="valid-feedback">
+                                                        Looks good!
+                                                      </div>
+                                                  </div>
+  
+                                              </div>
+                                          </div>
+
+                                          
+                                            <div class="row gx-3">
+                                              <div class="col-sm-6 mt-3">
+                                                <a class="btn btn-primary w-100" >
+                                                      <span>add</span>
+                                                      <i class="ri-add-line ps-1"></i>
+                                                </a>
+                                              </div>
+
+                                              <div class="col-sm-6 mt-3">
+                                                <a class="btn btn-danger w-100" >
+                                                  <span>remove</span>
+                                                  <i class="ri-add-line ps-1"></i>
+                                                </a>
+                                              </div>
+                                                  
+
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                          
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      
+                                    </div>
+
+                                      </div>
+                                </div>
+                              </div>
+                              <input type="submit" value="Add Product" name="addProduct" class="btn btn-success">
+
+                          </div>
+
+
+                          
+                    </form>
                 </div>
             </div>
         </div>
@@ -147,7 +285,59 @@
   <script src="../resources/js/bootstrap.min.js"></script>
   <script src="../resources/js/chart.umd.js"></script>
   <script src="../resources/js/custom-chart.js"></script>
-  
+  <script>
+     $(document).ready(function () {
+    // Initial row count
+    var rowCount = 1;
+
+    // Add button click event
+    $(".btn-primary").click(function () {
+      rowCount++;
+
+      // Clone the first "row add" div
+      var newRow = $(".row.add:first").clone();
+
+      // Update the index in the cloned div
+      newRow.find(".col-1 p").text(rowCount + ".");
+
+      // Clear the input values in the cloned div
+      newRow.find("input").val("");
+
+      // Append the cloned div after the last "row add" div
+      $(".row.add:last").after(newRow);
+    });
+
+    // Remove button click event
+    $(".btn-danger").click(function () {
+      if (rowCount > 1) {
+        rowCount--;
+
+        // Remove the last "row add" div
+        $(".row.add:last").remove();
+      }
+    });
+  });
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+  </script>
  
 </body>
 </html>
